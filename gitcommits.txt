@@ -1,0 +1,25 @@
+(base) PS C:\Users\mediu\ece105\lab3> git add lab3_sensor_plots.ipynb
+warning: in the working copy of 'lab3/lab3_sensor_plots.ipynb', LF will be replaced by CRLF the next time Git touches it
+(base) PS C:\Users\mediu\ece105\lab3> git commit -m "Add initial notebook with sensor visualizations."
+[master (root-commit) 9e5aecf] Add initial notebook with sensor visualizations.
+ 1 file changed, 185 insertions(+)
+ create mode 100644 lab3/lab3_sensor_plots.ipynb
+(base) PS C:\Users\mediu\ece105\lab3> git add generate_plots.py
+(base) PS C:\Users\mediu\ece105\lab3> git commit -m "Add data generation function with NumPy docstring"
+[master ec4706b] Add data generation function with NumPy docstring
+ 1 file changed, 33 insertions(+)
+ create mode 100644 lab3/generate_plots.py
+(base) PS C:\Users\mediu\ece105\lab3> git add generate_plots.py
+(base) PS C:\Users\mediu\ece105\lab3> git commit -m "Add scatter plot function with NumPy docstring"
+[master 936f0a3] Add scatter plot function with NumPy docstring
+ 1 file changed, 34 insertions(+), 1 deletion(-)
+(base) PS C:\Users\mediu\ece105\lab3> git add generate_plots.py  
+(base) PS C:\Users\mediu\ece105\lab3> git commit -m "Add histogram and boxplot functions with docstrings"
+[master 9ec7bdb] Add histogram and boxplot functions with docstrings
+ 1 file changed, 29 insertions(+)
+(base) PS C:\Users\mediu\ece105\lab3> git add generate_plots.py
+(base) PS C:\Users\mediu\ece105\lab3> git commit -m "Add main() entry point and figure saving"
+[master f15b3d4] Add main() entry point and figure saving
+ 1 file changed, 52 insertions(+)
+(base) PS C:\Users\mediu\ece105\lab3> conda activate ece105  
+(ece105) PS C:\Users\mediu\ece105\lab3> python generate_plots.py
