@@ -121,27 +121,32 @@ def plot_boxplot(sensor_a, sensor_b, ax):
 
 def main():
     """
-    Generate sensor data and create a figure with three subplots: scatter, histogram, and box plot.
+    Generate sensor data and create a figure with a 2x2 grid of subplots: scatter, histogram, box plot, and summary statistics.
 
-    Generates synthetic sensor data using a fixed seed, creates a 1x3 subplot figure,
-    calls the plotting functions for each subplot, adjusts the layout, and saves
-    the figure as 'sensor_analysis.png' at 150 DPI with tight bounding box.
+    Generates synthetic sensor data using a fixed seed, creates a 2x2 subplot figure,
+    calls the plotting functions for three subplots, adds summary statistics to the fourth,
+    adjusts the layout, and saves the figure as 'sensor_analysis.png' at 150 DPI with tight bounding box.
 
     Returns
     -------
     None
     """
     sensor_a, sensor_b, timestamps = generate_data(seed=2022)
-    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
-    plot_scatter(sensor_a, sensor_b, timestamps, axes[0])
-    plot_histogram(sensor_a, sensor_b, axes[1])
-    plot_boxplot(sensor_a, sensor_b, axes[2])
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+    plot_scatter(sensor_a, sensor_b, timestamps, axes[0, 0])
+    plot_histogram(sensor_a, sensor_b, axes[0, 1])
+    plot_boxplot(sensor_a, sensor_b, axes[1, 0])
+    
+    # Summary statistics in the fourth subplot
+    axes[1, 1].axis('off')
+    axes[1, 1].text(0.05, 0.95, 'Summary Statistics:', transform=axes[1, 1].transAxes, fontsize=12, verticalalignment='top')
+    axes[1, 1].text(0.05, 0.85, f'Sensor A: Mean = {np.mean(sensor_a):.2f}°C, Std = {np.std(sensor_a):.2f}°C', transform=axes[1, 1].transAxes, fontsize=10)
+    axes[1, 1].text(0.05, 0.75, f'Sensor B: Mean = {np.mean(sensor_b):.2f}°C, Std = {np.std(sensor_b):.2f}°C', transform=axes[1, 1].transAxes, fontsize=10)
+    overall_mean = np.mean(np.concatenate([sensor_a, sensor_b]))
+    axes[1, 1].text(0.05, 0.65, f'Overall Mean = {overall_mean:.2f}°C', transform=axes[1, 1].transAxes, fontsize=10)
+    
     plt.tight_layout()
     plt.savefig('sensor_analysis.png', dpi=150, bbox_inches='tight')
 
 if __name__ == '__main__':
     main()
-
-# Create main() that generates data, creates a 1x3 subplot figure,
-# calls each plot function, adjusts layout, and saves as sensor_analysis.png
-# at 150 DPI with tight bounding box.
